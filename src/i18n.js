@@ -20,8 +20,8 @@ const resources = {
 
       // Designs page
       "designs.title": "Looks",
-      "designs.subtitle": "Natural ~ Refined ~ Fantastical",
-      "designs.description": "Every jacket, skirt, or top is built for real life—layerable, breathable, low-maintenance, and strong enough to last.\n\nThese aren't mass-produced. I create each piece myself in Houston, Texas, using wild-sourced deer and elk hides known for their supple feel and raw beauty. These hides carry the stories of their former life—scars, textures, wildness—and I shape them into daring fashion that feels as luxurious as it looks. M Renee is elegance grounded in nature. \n\n** Look Book coming soon with images of current work ** \nI am deep in the making, so here is a glimpse of sold pieces as I prepare a new body of work to photograph, to share, to offer.\n\nIn the meantime, my best effort of describing the range of possibilities.\n \nAny of these looks can be made in two silhouettes (full bust or sleek bust), two collar/sleeve styles (Queen collar with bell sleeves, or Elvira standing collar with classic sleeves), and customizable length and style (raw edge or clean seams), in your choice of color: black, dark chocolate, tobacco, willow, red (or inquire for other colors).\n\nCustomizable looks: Jackets. Dresses. Skirts. Bustier vests. Fringe capes/belts. Jock straps. \n \nIn development: Mens vests and jackets, pants, jumpsuits, Alligator corset belts, and more.\n\nPhotos are for reference-- current pattern cuts have been updated and refined. \n",
+      "designs.subtitle": "Natural.  Refined.  Fantastical.",
+      "designs.description": "These aren't mass-produced. I create each piece myself in Houston, Texas.\nAvailable looks: Jackets. Dusters. Dresses. Skirts. Bustier vests. Fringe capes/belts. Jock straps.\nAny of these looks can be made in:\n- two bust silhouettes (curvy bust or sleek bust)\n- two collar/sleeve styles (Queen collar with bell sleeves, or Elvira standing collar with classic sleeves)\n- customizable length and style (raw edge or clean seams)\n- in your choice of color: black, dark chocolate, tobacco, willow, red (or inquire for other colors)\n\n*Photos are for reference-- patterns have evolved and been further refined.\n\n** Look Book of current work coming soon **\nI am deep in the making, so this is a glimpse of sold pieces as I prepare a new body of work to photograph, to share, to offer.\n\n\nTo tease you… In development: Mens vests and jackets, pants, jumpsuits, Alligator corset belts, and more.\n",
       "designs.product1": "Queen Collar Leather Coat (front)",
       "designs.product2": "Queen Collar Leather Coat (back)",
       "designs.product3": "Queen collar vest (or jacket) with peplum back",
@@ -31,10 +31,10 @@ const resources = {
 
       // Custom page
       "custom.title": "Custom Designs",
-      "custom.tagline": "Custom design fittings are one on one, creating bespoke epic fashion from the hides of your choice, draped to flatter your form, designed suit your function",
-      "custom.subtitle": "Empowerment through personalized fashion design",
+      "custom.tagline": "Custom design fittings are one on one, creating bespoke epic fashion from the hides of your choice, draped to flatter your form, designed to suit your function.",
+      "custom.subtitle": "Empowerment through personalized fashion design. Real materials for real people.",
       "custom.motto": "Natural. Refined. Fantastical.",
-      "custom.description": "One-on-one design consultation and fittings in my Houston atelier, or fly me to you (details and pricing via email).\n\nDiscretion is at the heart of the M. Renee experience. All measurements, communications, and private details entrusted to the Atelier are held in strict confidence. No Client's identity shall be revealed without explicit written consent. Photographs of works may appear in editorial or promotional contexts, yet always without attribution unless invited by the Client.\n\nClients may apply to host a trunk show. Designer and assistants will bring current inventory for personal shopping, and I will be available for custom order consultations in a social atmosphere.",
+      "custom.description": "One-on-one design consultation and fittings in my Houston atelier, or fly me to you (details via email).\nClients may apply to host a trunk show. Designer and staff will bring current inventory for personal shopping, and be available for custom order consultations in a social atmosphere.\n\n\nDiscretion is at the heart of the M. Renee experience. All measurements, communications, and private details entrusted to the Atelier are held in strict confidence. No Client's identity shall be revealed without explicit written consent. Photographs of works may appear in editorial or promotional contexts, yet always without attribution unless invited by the Client.\n\n",
       "custom.cta": "To have bespoke clothing made for you pleasure",
       "custom.cta.link": "contact us",
 
@@ -46,7 +46,7 @@ const resources = {
       "contact.location.value": "Houston Heights",
       "contact.hours.label": "Hours:",
       "contact.hours.value": "By appointment",
-      "contact.social.label": "Follow us on Instagram",
+      "contact.social.label": "Follow on Instagram",
 
       // Footer
       "footer.copyright": "M. Renee Designs. All rights reserved.",
