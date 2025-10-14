@@ -21,6 +21,21 @@ const ResponsiveVideo = ({ className = '', style = {} }) => {
     const source = selectVideoSource();
     setCurrentSource(source);
 
+    // Set video to show frame at 2 seconds when metadata loads
+    if (videoRef.current) {
+      const handleLoadedMetadata = () => {
+        if (videoRef.current && videoRef.current.paused) {
+          videoRef.current.currentTime = 2;
+        }
+      };
+      videoRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        }
+      };
+    }
+
     // Update video source on resize
     const handleResize = () => {
       const newSource = selectVideoSource();
