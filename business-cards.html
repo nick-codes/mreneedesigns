@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. Renee Designs - Business Cards</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Georgia, serif;
+    background: #e0e0e0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page {
+    size: 8.5in 11in;
+    margin: 0;
+  }
+
+  /* ===== SHEET LAYOUT =====
+     Vertical cards: 2in x 3.5in (art is 600x1050 @ 300dpi)
+     Grid: 4 columns x 3 rows = 12 cards, 8in x 10.5in
+     Margins: 0.25in all around */
+  .sheet {
+    width: 8.5in;
+    height: 11in;
+    background: white;
+    position: relative;
+    margin: 0 auto;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  .sheet:last-child {
+    page-break-after: auto;
+  }
+
+  .card-grid {
+    position: absolute;
+    top: 0.25in;
+    left: 0.25in;
+    width: 8in;
+    height: 10.5in;
+    display: grid;
+    grid-template-columns: repeat(4, 2in);
+    grid-template-rows: repeat(3, 3.5in);
+  }
+
+  .card {
+    width: 2in;
+    height: 3.5in;
+    overflow: hidden;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* ===== CUT MARKS (in the 0.25in margins) ===== */
+  .cut-mark {
+    position: absolute;
+    background: #000;
+  }
+  .cut-v {
+    width: 0.5px;
+    height: 0.18in;
+  }
+  .cut-h {
+    width: 0.18in;
+    height: 0.5px;
+  }
+  .cut-v.top { top: 0.02in; }
+  .cut-v.bottom { bottom: 0.02in; }
+  .cut-h.left { left: 0.02in; }
+  .cut-h.right { right: 0.02in; }
+
+  /* Column guide positions */
+  .col-0 { left: 0.25in; }
+  .col-1 { left: 2.25in; }
+  .col-2 { left: 4.25in; }
+  .col-3 { left: 6.25in; }
+  .col-4 { left: 8.25in; }
+
+  /* Row guide positions */
+  .row-0 { top: 0.25in; }
+  .row-1 { top: 3.75in; }
+  .row-2 { top: 7.25in; }
+  .row-3 { top: 10.75in; }
+
+  /* ===== SCREEN HELPERS ===== */
+  .page-label {
+    text-align: center;
+    font-size: 11pt;
+    color: #888;
+    margin: 10px auto 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  @media print {
+    .page-label { display: none; }
+    .sheet { box-shadow: none; }
+  }
+
+  @media screen {
+    .sheet {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<p class="page-label">Sheet 1 &mdash; Card Fronts (6 black &middot; 6 green)</p>
+<div class="sheet">
+  <div class="cut-mark cut-v top col-0"></div>
+  <div class="cut-mark cut-v top col-1"></div>
+  <div class="cut-mark cut-v top col-2"></div>
+  <div class="cut-mark cut-v top col-3"></div>
+  <div class="cut-mark cut-v top col-4"></div>
+  <div class="cut-mark cut-v bottom col-0"></div>
+  <div class="cut-mark cut-v bottom col-1"></div>
+  <div class="cut-mark cut-v bottom col-2"></div>
+  <div class="cut-mark cut-v bottom col-3"></div>
+  <div class="cut-mark cut-v bottom col-4"></div>
+  <div class="cut-mark cut-h left row-0"></div>
+  <div class="cut-mark cut-h left row-1"></div>
+  <div class="cut-mark cut-h left row-2"></div>
+  <div class="cut-mark cut-h left row-3"></div>
+  <div class="cut-mark cut-h right row-0"></div>
+  <div class="cut-mark cut-h right row-1"></div>
+  <div class="cut-mark cut-h right row-2"></div>
+  <div class="cut-mark cut-h right row-3"></div>
+
+  <div class="card-grid">
+    <div class="card"><img src="cards-images/front-black.png" alt="Card front, black"></div>
+    <div class="card"><img src="cards-images/front-green.png" alt="Card front, green"></div>
+    <div class="card"><img src="cards-images/front-black.png" alt="Card front, black"></div>
+    <div class="card"><img src="cards-images/front-green.png" alt="Card front, green"></div>
+    <div class="card"><img src="cards-images/front-black.png" alt="Card front, black"></div>
+    <div class="card"><img src="cards-images/front-green.png" alt="Card front, green"></div>
+    <div class="card"><img src="cards-images/front-black.png" alt="Card front, black"></div>
+    <div class="card"><img src="cards-images/front-green.png" alt="Card front, green"></div>
+    <div class="card"><img src="cards-images/front-black.png" alt="Card front, black"></div>
+    <div class="card"><img src="cards-images/front-green.png" alt="Card front, green"></div>
+    <div class="card"><img src="cards-images/front-black.png" alt="Card front, black"></div>
+    <div class="card"><img src="cards-images/front-green.png" alt="Card front, green"></div>
+  </div>
+</div>
+
+<p class="page-label">Sheet 2 &mdash; Card Backs (all identical)</p>
+<div class="sheet">
+  <div class="cut-mark cut-v top col-0"></div>
+  <div class="cut-mark cut-v top col-1"></div>
+  <div class="cut-mark cut-v top col-2"></div>
+  <div class="cut-mark cut-v top col-3"></div>
+  <div class="cut-mark cut-v top col-4"></div>
+  <div class="cut-mark cut-v bottom col-0"></div>
+  <div class="cut-mark cut-v bottom col-1"></div>
+  <div class="cut-mark cut-v bottom col-2"></div>
+  <div class="cut-mark cut-v bottom col-3"></div>
+  <div class="cut-mark cut-v bottom col-4"></div>
+  <div class="cut-mark cut-h left row-0"></div>
+  <div class="cut-mark cut-h left row-1"></div>
+  <div class="cut-mark cut-h left row-2"></div>
+  <div class="cut-mark cut-h left row-3"></div>
+  <div class="cut-mark cut-h right row-0"></div>
+  <div class="cut-mark cut-h right row-1"></div>
+  <div class="cut-mark cut-h right row-2"></div>
+  <div class="cut-mark cut-h right row-3"></div>
+
+  <div class="card-grid">
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+    <div class="card"><img src="cards-images/back.png" alt="Card back"></div>
+  </div>
+</div>
+
+</body>
+</html>

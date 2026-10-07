@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. Renee Designs - Tri-Fold Brochure</title>
+<link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --olive-dark: #3D441E;
+    --brown-dark: #833921;
+    --brown-light: #B86125;
+    --green-dark: #286140;
+    --olive-light: #4E5B31;
+    --blue-dark: #012169;
+    --teal: #2d798c;
+    --cream: #fcf7f0;
+    --wall: #e6ddcc;
+    --dark-teal: #053c3d;
+    --logo-brown: #bc6f2c;
+    --warm-white: #f8f5f0;
+    --panel-border: #d4c5b3;
+  }
+  body {
+    font-family: 'Bellefair', Georgia, serif;
+    color: var(--dark-teal);
+    background: #e0e0e0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* ===== PRINT SETUP ===== */
+  @page {
+    size: 11.125in 8.625in;
+    margin: 0;
+  }
+  /* ===== PAGE CONTAINER ===== */
+  .page {
+    width: 11.125in;
+    height: 8.625in;
+    padding: 0.0625in;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    margin: 0 auto 20px auto;
+    page-break-after: always;
+  }
+  .page:last-child {
+    page-break-after: auto;
+  }
+  /* ===== PANEL BASE ===== */
+  .panel {
+    width: 3.6667in;
+    height: 8.5in;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .back-panel { width: 3.6238in; }
+  .contact-panel { width: 3.6880in; }
+  .front-panel { width: 3.6882in; }
+  .about-panel { width: 3.6932in; }
+  .collection-panel { width: 3.6880in; }
+  .bespoke-panel { width: 3.6188in; }
+  .panel-inner {
+    position: absolute;
+    top: 0.35in;
+    left: 0.3in;
+    right: 0.3in;
+    bottom: 0.35in;
+    display: flex;
+    flex-direction: column;
+  }
+  /* ===== FOLD GUIDES ===== */
+  .fold-mark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px dashed #ccc;
+    z-index: 10;
+  }
+  #page-outside .fold-mark-1 { left: 3.6863in; }
+  #page-outside .fold-mark-2 { left: 7.3743in; }
+  #page-inside .fold-mark-1 { left: 3.7557in; }
+  #page-inside .fold-mark-2 { left: 7.4437in; }
+  /* Fold tick marks — small lines at top and bottom edges for precise folding */
+  .fold-tick {
+    position: absolute;
+    width: 0.5px;
+    background: #999;
+    z-index: 20;
+  }
+  .fold-tick-top { top: 0; height: 0.055in; }
+  .fold-tick-bottom { bottom: 0; height: 0.055in; }
+  #page-outside .fold-tick-1 { left: 3.6863in; }
+  #page-outside .fold-tick-2 { left: 7.3743in; }
+  #page-inside .fold-tick-1 { left: 3.7557in; }
+  #page-inside .fold-tick-2 { left: 7.4437in; }
+  /* Corner registration marks */
+  .reg-mark {
+    position: absolute;
+    z-index: 20;
+  }
+  .reg-mark::before, .reg-mark::after {
+    content: '';
+    position: absolute;
+    background: #999;
+  }
+  .reg-mark::before {
+    width: 0.05in;
+    height: 0.5px;
+  }
+  .reg-mark::after {
+    width: 0.5px;
+    height: 0.05in;
+  }
+  .reg-tl { top: 0; left: 0; }
+  .reg-tl::before { top: 0.0625in; left: 0.005in; }
+  .reg-tl::after { left: 0.0625in; top: 0.005in; }
+  .reg-tr { top: 0; right: 0; }
+  .reg-tr::before { top: 0.0625in; right: 0.005in; }
+  .reg-tr::after { right: 0.0625in; top: 0.005in; }
+  .reg-bl { bottom: 0; left: 0; }
+  .reg-bl::before { bottom: 0.0625in; left: 0.005in; }
+  .reg-bl::after { left: 0.0625in; bottom: 0.005in; }
+  .reg-br { bottom: 0; right: 0; }
+  .reg-br::before { bottom: 0.0625in; right: 0.005in; }
+  .reg-br::after { right: 0.0625in; bottom: 0.005in; }
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; }
+    .fold-mark { display: none; }
+    /* GotPrint: no guide marks may appear in the submitted file */
+    .fold-tick { display: none; }
+    .reg-mark { display: none; }
+  }
+  /* ===== TYPOGRAPHY ===== */
+  h1, h2, h3, h4, strong {
+    font-family: 'Bellefair', Georgia, serif;
+    font-weight: 400;
+  }
+  .tagline {
+    font-family: 'Bellefair', Georgia, serif;
+    font-style: italic;
+    letter-spacing: 0.08em;
+  }
+  /* ===== DECORATIVE LINE ===== */
+  .divider {
+    width: 1.8in;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--brown-light), transparent);
+    margin: 0.1in auto;
+  }
+  .divider-left {
+    width: 1.2in;
+    height: 1px;
+    background: linear-gradient(to right, var(--brown-light), transparent);
+    margin: 0.08in 0;
+  }
+  .divider-short {
+    width: 0.8in;
+    height: 1px;
+    background: var(--brown-light);
+    margin: 0.06in 0;
+  }
+  /* =============================================
+     PAGE 1 - OUTSIDE
+     Left: Contact Flap | Center: Back Cover | Right: Front Cover
+     ============================================= */
+  /* --- PANEL: CONTACT FLAP (left, outside) --- */
+  .contact-panel {
+    background: var(--wall);
+  }
+  .contact-panel::before {
+    content: '';
+    position: absolute;
+    top: -0.0625in;
+    left: 0;
+    right: 0;
+    bottom: -0.0625in;
+    background: var(--wall);
+  }
+  .contact-panel .panel-inner {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  .contact-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.15in;
+  }
+  .contact-image-strip {
+    width: 100%;
+    height: 2.6in;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0.1in 0;
+    position: relative;
+  }
+  .contact-image-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .contact-details {
+    text-align: center;
+    padding: 0.05in 0;
+  }
+  .contact-details h3 {
+    font-size: 12pt;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.1in;
+  }
+  .contact-item {
+    font-size: 12pt;
+    line-height: 1.7;
+    color: var(--dark-teal);
+  }
+  .contact-item strong {
+    color: var(--brown-dark);
+    font-weight: 400;
+  }
+  .contact-social {
+    margin-top: 0.12in;
+    padding-top: 0.08in;
+    border-top: 1px solid var(--panel-border);
+  }
+  .contact-social .instagram-handle {
+    font-family: 'Bellefair', Georgia, serif;
+    font-size: 12pt;
+    color: var(--brown-dark);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .contact-social .instagram-label {
+    font-size: 12pt;
+    color: var(--olive-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.03in;
+  }
+  .contact-website {
+    font-size: 12pt;
+    color: var(--teal);
+    margin-top: 0.06in;
+    letter-spacing: 0.04em;
+  }
+  /* --- PANEL: BACK COVER (center, outside) --- */
+  .back-panel {
+    background: var(--dark-teal);
+    color: white;
+  }
+  .back-image-container {
+    position: absolute;
+    top: -0.0625in;
+    left: -0.0625in;
+    right: 0;
+    bottom: -0.0625in;
+    overflow: hidden;
+  }
+  .back-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 90% center;
+    transform: scale(1.08);
+    transform-origin: 50% 24%;
+  }
+  .back-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(to top, rgba(5,60,61,0.92) 0%, rgba(5,60,61,0.6) 50%, transparent 100%);
+  }
+  .back-text {
+    position: relative;
+    z-index: 2;
+    padding: 0.4in 0.22in;
+    text-align: center;
+  }
+  .back-text .quote {
+    font-family: 'Bellefair', Georgia, serif;
+    font-style: italic;
+    font-size: 12pt;
+    line-height: 1.55;
+    color: #f0ebe4;
+    margin-bottom: 0.12in;
+  }
+  .back-text .quote-attribution {
+    font-family: 'Bellefair', Georgia, serif;
+    font-size: 12pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+  }
+  .back-motto {
+    font-family: 'Bellefair', Georgia, serif;
+    white-space: nowrap;
+    font-size: 12pt;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.7);
+    margin-top: 0.1in;
+  }
+  /* --- PANEL: FRONT COVER (right, outside) --- */
+  .front-panel {
+    background: var(--wall);
+  }
+  .front-hero-bleed {
+    position: absolute;
+    top: -0.0625in;
+    left: 0;
+    right: -0.0625in;
+    bottom: -0.0625in;
+    overflow: hidden;
+  }
+  .front-hero-bleed img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 80% center;
+  }
+  .front-bottom-group {
+    position: absolute;
+    top: 0.6in;
+    left: 0.3in;
+    right: 0.3in;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+  }
+  .front-logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 2in;
+    margin: 0 auto;
+  }
+  .front-bottom-group .front-logo-section {
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+  }
+  .front-name-logo {
+    width: 2.2in;
+    height: auto;
+    display: block;
+    margin: -0.3in 0 0;
+  }
+  .front-bottom-group .front-name-logo {
+    width: 2.35in;
+    margin: 0 0 0 0.42in;
+  }
+  .front-logo {
+    width: 1in;
+    height: auto;
+    align-self: flex-end;
+    position: relative;
+    z-index: 2;
+    margin: 0 -0.45in -0.55in 0;
+  }
+  .front-tagline {
+    position: absolute;
+    bottom: 0.09in;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+    left: 0.06in;
+    right: 0.06in;
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+    font-style: normal;
+    letter-spacing: 0;
+    transform: scaleX(0.94);
+    transform-origin: center;
+    font-size: 12pt;
+    color: var(--brown-dark);
+    letter-spacing: 0.12em;
+    margin: 0.04in 0;
+  }
+  .front-subtitle {
+    font-size: 10pt;
+    color: var(--olive-dark);
+    line-height: 1.5;
+    max-width: 2.8in;
+    margin-bottom: 0.04in;
+  }
+  /* =============================================
+     PAGE 2 - INSIDE
+     Left: About | Center: The Collection | Right: Bespoke
+     ============================================= */
+  /* --- PANEL: ABOUT (left, inside) --- */
+  .about-panel {
+    background: var(--wall);
+  }
+  .about-panel::before {
+    content: '';
+    position: absolute;
+    top: -0.0625in;
+    left: -0.0625in;
+    right: 0;
+    bottom: -0.0625in;
+    background: var(--wall);
+  }
+  .about-panel .panel-inner {
+    justify-content: flex-start;
+  }
+  .about-header {
+    text-align: center;
+    margin-bottom: 0.08in;
+  }
+  .about-header h2 {
+    font-size: 14pt;
+    color: var(--brown-dark);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .about-body p {
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--dark-teal);
+    margin-bottom: 0.08in;
+    text-align: left;
+    hyphens: auto;
+  }
+  .about-body .highlight {
+    font-style: italic;
+    color: var(--brown-dark);
+  }
+  .about-body .motto {
+    text-align: center;
+    color: var(--brown-dark);
+    margin: 0.02in 0 0.1in;
+  }
+  .about-body .backstory {
+    margin-top: 0.22in;
+  }
+  .about-workshop-img {
+    width: 100%;
+    height: 4.2in;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.1in;
+  }
+  .about-workshop-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  /* --- PANEL: COLLECTION (center, inside) --- */
+  .collection-panel {
+    background: var(--wall);
+  }
+  .collection-panel::before {
+    content: '';
+    position: absolute;
+    top: -0.0625in;
+    left: 0;
+    right: 0;
+    bottom: -0.0625in;
+    background: var(--wall);
+  }
+  .collection-panel .panel-inner {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.08in;
+    width: 100%;
+    margin-bottom: 0.06in;
+  }
+  .collection-item {
+    height: 1.89in;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .crop-reddress img {
+    object-position: 45% 30%;
+    transform: scale(1.5);
+    transform-origin: 45% 30%;
+  }
+  .crop-teal img {
+    transform: scale(1.45);
+    transform-origin: 50% 84%;
+  }
+  .crop-deerhide img {
+    object-position: center 35%;
+  }
+  .crop-seafoam img {
+    transform: scale(1.2);
+    transform-origin: 50% 20%;
+  }
+  .crop-toby img {
+    transform: scale(1.12);
+    transform-origin: center 26%;
+  }
+  .crop-queen img {
+    transform: scale(1.12);
+    transform-origin: center bottom;
+  }
+  .collection-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
+  }
+  /* --- PANEL: BESPOKE (right, inside) --- */
+  .bespoke-panel {
+    background: var(--dark-teal);
+  }
+  .bespoke-panel .panel-inner {
+    justify-content: flex-start;
+    z-index: 2;
+  }
+  .bespoke-panel .back-text {
+    margin-top: auto;
+    margin-left: -0.3in;
+    margin-right: -0.3in;
+    margin-bottom: -0.35in;
+  }
+  .bespoke-image-container {
+    position: absolute;
+    top: -0.0625in;
+    left: 0;
+    right: -0.0625in;
+    bottom: -0.0625in;
+    overflow: hidden;
+  }
+  .bespoke-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% center;
+    transform: scale(1.1);
+    transform-origin: 70% 100%;
+  }
+  .back-panel .panel-inner {
+    z-index: 2;
+  }
+  .bespoke-content {
+    text-align: center;
+  }
+  .back-panel .bespoke-content {
+    margin-top: 0.22in;
+  }
+  .bespoke-header {
+    text-align: center;
+    margin-bottom: 0.06in;
+  }
+  .bespoke-header h2 {
+    font-size: 14pt;
+    color: #000000;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .bespoke-header .subtitle {
+    font-size: 10pt;
+    color: var(--olive-light);
+    font-style: italic;
+    margin-top: 0.03in;
+  }
+  .bespoke-body p {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000000;
+    margin-bottom: 0.06in;
+    text-align: center;
+  }
+  /* ===== SCREEN HELPERS ===== */
+  .page-label {
+    text-align: center;
+    font-family: 'Bellefair', Georgia, serif;
+    font-size: 11pt;
+    color: #888;
+    margin: 10px auto 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @media print {
+    .page-label { display: none; }
+    .page { box-shadow: none; }
+  }
+  @media screen {
+    .page {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+    .contact-image-strip { box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .about-workshop-img { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .collection-item { box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+  }
+</style>
+</head>
+<body>
+<!-- ==========================================
+     PAGE 1 - OUTSIDE (prints face-down)
+     Left=Back Cover | Center=Contact Flap | Right=Front Cover
+     ========================================== -->
+<p class="page-label">Page 1 &mdash; Outside (Back &amp; Front Cover)</p>
+<div class="page" id="page-outside">
+  <div class="fold-mark fold-mark-1"></div>
+  <div class="fold-mark fold-mark-2"></div>
+  <div class="fold-tick fold-tick-top fold-tick-1"></div>
+  <div class="fold-tick fold-tick-top fold-tick-2"></div>
+  <div class="fold-tick fold-tick-bottom fold-tick-1"></div>
+  <div class="fold-tick fold-tick-bottom fold-tick-2"></div>
+  <div class="reg-mark reg-tl"></div>
+  <div class="reg-mark reg-tr"></div>
+  <div class="reg-mark reg-bl"></div>
+  <div class="reg-mark reg-br"></div>
+  <!-- PANEL 1: Back Cover (left, folds to become the back of the brochure) -->
+  <div class="panel back-panel">
+    <div class="back-image-container">
+      <img src="brochure-images/queen-back.jpg" alt="Queen Collar Coat, back">
+    </div>
+    <div class="panel-inner">
+      <div class="bespoke-content">
+      <div class="bespoke-header">
+        <h2>Bespoke Fashion</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="bespoke-body">
+        <p>
+          Custom design fittings are one on one, creating with the hides of your choice, draped to flatter your form, designed to suit your function.
+        </p>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- PANEL 2: Contact Flap (center, first thing seen when opening the front cover) -->
+  <div class="panel contact-panel">
+    <div class="panel-inner">
+      <div class="contact-top">
+        <div class="front-logo-section">
+          <img class="front-logo" src="brochure-images/fox-line-weighted.svg" alt="M. Renee Designs">
+          <img class="front-name-logo" src="brochure-images/name-logo-black.svg?v=5" alt="M Renee">
+        </div>
+        </div>
+      <div class="contact-image-strip">
+        <img src="brochure-images/looks_23_halter-seafoam.JPG" alt="Emily Renee">
+      </div>
+      <div class="contact-details">
+        <h3>Get in Touch</h3>
+        <div class="contact-item"><strong>Email</strong><br>emily@mReneeDesigns.com</div>
+        <div class="contact-item" style="margin-top:0.06in"><strong>Phone</strong><br>(504) 383-5044</div>
+        <div class="contact-item" style="margin-top:0.06in"><strong>Atelier</strong><br>Houston Heights<br>By Appointment</div>
+        <div class="contact-social">
+          <div class="instagram-label">Follow on Instagram</div>
+          <div class="instagram-handle">@mrenee_designs</div>
+        </div>
+        <div class="contact-website">mreneedesigns.com</div>
+      </div>
+    </div>
+  </div>
+  <!-- PANEL 3: Front Cover -->
+  <div class="panel front-panel">
+    <div class="front-hero-bleed">
+      <img src="brochure-images/looks_02_queen3.jpg" alt="Queen Collar Coat">
+    </div>
+    <div class="front-bottom-group">
+      <div class="front-logo-section">
+        <img class="front-name-logo" src="brochure-images/name-logo-black.svg?v=5" alt="M Renee">
+      </div>
+    </div>
+    <div class="tagline front-tagline">REFINED&nbsp;&nbsp;NATURAL&nbsp;&nbsp;FANTASTICAL</div>
+  </div>
+</div>
+<!-- ==========================================
+     PAGE 2 - INSIDE (unfolds to reveal)
+     Left=About | Center=Collection | Right=Bespoke
+     ========================================== -->
+<p class="page-label">Page 2 &mdash; Inside</p>
+<div class="page" id="page-inside">
+  <div class="fold-mark fold-mark-1"></div>
+  <div class="fold-mark fold-mark-2"></div>
+  <div class="fold-tick fold-tick-top fold-tick-1"></div>
+  <div class="fold-tick fold-tick-top fold-tick-2"></div>
+  <div class="fold-tick fold-tick-bottom fold-tick-1"></div>
+  <div class="fold-tick fold-tick-bottom fold-tick-2"></div>
+  <div class="reg-mark reg-tl"></div>
+  <div class="reg-mark reg-tr"></div>
+  <div class="reg-mark reg-bl"></div>
+  <div class="reg-mark reg-br"></div>
+  <!-- PANEL 4: About the Designer -->
+  <div class="panel about-panel">
+    <div class="panel-inner">
+      <div class="about-header">
+        <h2>The Designer</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-workshop-img">
+        <img src="brochure-images/about_01_sewing-fur.jpg" alt="M at work in her Houston atelier">
+      </div>
+      <div class="about-body">
+        <p>
+          Independent designer M Renee lives and works in Houston, creating custom leather fashion for clients.
+        </p>
+        <p class="motto"><em>REFINED&nbsp;&nbsp;NATURAL&nbsp;&nbsp;FANTASTICAL</em></p>
+        <p>
+          Deer is her primary leather, unlined, because of its supple movement and breathability. Feel and function are primary. Clean lines or raw edges, dynamic shapes are recognizable across her body of work.
+        </p>
+        <p class="backstory">
+          M Renee began sewing for herself as a child, and in her 20s made the first leather look. So many strangers approached her while she was wearing that look to buy it, that leather fashion is full time. Each piece is unique. Decadent slow fashion built to last.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- PANEL 5: The Collection -->
+  <div class="panel collection-panel">
+    <div class="panel-inner">
+      <div class="collection-grid">
+        <div class="collection-item collection-item-tall crop-reddress">
+          <img src="brochure-images/looks_10_dress-red-zoe-front.jpeg" alt="Backless Halter Dress">
+        </div>
+        <div class="collection-item crop-teal">
+          <img src="brochure-images/home_13_teal-3-dress-greybg.jpg" alt="Teal Deerhide Dresses">
+        </div>
+        <div class="collection-item collection-item-short">
+          <img src="brochure-images/custom_07_zoe2.jpg" alt="Custom Fitted Jacket">
+        </div>
+        <div class="collection-item collection-item-short crop-seafoam">
+          <img src="brochure-images/looks_04_vest-peplum.jpg" alt="Queen Peplum Vest">
+        </div>
+        <div class="collection-item crop-toby">
+          <img src="brochure-images/home_05_toby1.jpg" alt="Custom Menswear Jacket">
+        </div>
+        <div class="collection-item crop-queen">
+          <img src="brochure-images/home_09_queen-gwen.jpg" alt="Queen Coat">
+        </div>
+        <div class="collection-item">
+          <img src="brochure-images/home_18_skirt-fringe1.jpg" alt="Fringe Skirt">
+        </div>
+        <div class="collection-item crop-deerhide">
+          <img src="brochure-images/home_17_red-halter-jamie.jpg" alt="Red Halter Top">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- PANEL 6: Bespoke / Custom -->
+  <div class="panel bespoke-panel">
+    <div class="bespoke-image-container">
+      <img src="brochure-images/custom_22_editorial-zoe.jpg" alt="Editorial - M. Renee Designs">
+      <div class="back-image-overlay"></div>
+    </div>
+    <div class="panel-inner">
+      <div class="back-text">
+        <div class="quote">
+          &ldquo;From wild animals, these hides are so close to nature you can sense the earthy aliveness, feel it like the comfort of a hug, decadently supple.&rdquo;
+        </div>
+        <div class="divider" style="background: linear-gradient(to right, transparent, rgba(184,97,37,0.6), transparent);"></div>
+        <div class="back-motto">REFINED&nbsp;&nbsp;NATURAL&nbsp;&nbsp;FANTASTICAL</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
